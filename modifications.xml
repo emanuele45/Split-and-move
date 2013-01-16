@@ -62,20 +62,6 @@ function SplitIndex()
 
 		}
 		$smcFunc['db_free_result']($request);
-
-		// Now, let's sort the list of categories into the boards for templates that like that.
-		$temp_boards = array();
-		foreach ($context['categories'] as $category)
-		{
-			$temp_boards[] = array(
-				'name' => $category['name'],
-				'child_ids' => array_keys($category['boards'])
-			);
-			$temp_boards = array_merge($temp_boards, array_values($category['boards']));
-
-			// Include a list of boards per category for easy toggling.
-			$context['categories'][$category['id']]['child_ids'] = array_keys($category['boards']);
-		}
 	}
 ]]></add>
 		</operation>
